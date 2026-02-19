@@ -36,18 +36,6 @@
       z-index: 10;
     }
 
-    #urlInput {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 300px;
-    }
-
     #urlFrame {
       width: 100vw;
       height: 100vh;
@@ -64,7 +52,6 @@
 
   <h1>BNAlay</h1>
 
-  <input type="text" id="urlInput" placeholder="Enter URL to load" />
   <button id="loadBtn">Load URL with TPLan I.P</button>
 
   <iframe
@@ -76,20 +63,20 @@
   <script>
     const loadBtn = document.getElementById("loadBtn");
     const frame = document.getElementById("urlFrame");
-    const urlInput = document.getElementById("urlInput");
 
     loadBtn.onclick = () => {
-      const url = urlInput.value;
-      frame.src = url;
+      const url = prompt("Please enter the URL to load:");
+      if (url) {
+        frame.src = url;
 
-      frame.style.display = "block";
+        frame.style.display = "block";
 
-      if (frame.requestFullscreen) frame.requestFullscreen();
-      else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+        if (frame.requestFullscreen) frame.requestFullscreen();
+        else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
 
-      frame.focus();
-      loadBtn.style.display = "none";
-      urlInput.style.display = "none";
+        frame.focus();
+        loadBtn.style.display = "none";
+      }
     };
   </script>
 
