@@ -64,11 +64,10 @@
     const loadBtn = document.getElementById("loadBtn");
     const frame = document.getElementById("urlFrame");
 
-    loadBtn.onclick = () => {
+    window.onload = () => {
       const url = prompt("Please enter the URL to load:");
       if (url) {
         frame.src = url;
-
         frame.style.display = "block";
 
         if (frame.requestFullscreen) frame.requestFullscreen();
