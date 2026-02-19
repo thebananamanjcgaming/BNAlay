@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="/apple-touch-icon.png">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="BNAlay">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <title>BNAlay</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    #loadBtn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 18px 28px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      background: #1e90ff;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #urlInput {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+
+    #urlFrame {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>BNAlay</h1>
+
+  <input type="text" id="urlInput" placeholder="Enter URL to load" />
+  <button id="loadBtn">Load URL with TPLan I.P</button>
+
+  <iframe
+    id="urlFrame"
+    allow="fullscreen; pointer-lock"
+    sandbox="allow-scripts allow-same-origin"
+  ></iframe>
+
+  <script>
+    const loadBtn = document.getElementById("loadBtn");
+    const frame = document.getElementById("urlFrame");
+    const urlInput = document.getElementById("urlInput");
+
+    loadBtn.onclick = () => {
+      const url = urlInput.value;
+      frame.src = url;
+
+      frame.style.display = "block";
+
+      if (frame.requestFullscreen) frame.requestFullscreen();
+      else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+
+      frame.focus();
+      loadBtn.style.display = "none";
+      urlInput.style.display = "none";
+    };
+  </script>
+
+</body>
+</html>
